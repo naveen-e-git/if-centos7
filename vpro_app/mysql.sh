@@ -46,10 +46,10 @@ else
           echo
           sudo yum install epel-release -y
           sudo yum update -y
-          sudo yum install mysql-server -y
+          sudo yum install mariadb-server -y
 
-          sudo service mysqld start
-          sed -i 's/127.0.0.1/0.0.0.0/' /etc/my.cnf
+          sudo systemctl start mariadb
+          sudo echo "bind-address  =  0.0.0.0" >> /etc/my.cnf
 
           echo
           echo  "restoring  the dump file for the application"
@@ -63,7 +63,7 @@ else
           echo
           echo "starting & enabling mariadb-server"
           echo
-          sudo systemctl restart mysqld
+          sudo systemctl restart mariadb
           #sudo chkconfig mysqld on
           echo
           echo "starting the firewall and allowing the mariadb to access from port no. 3306"
