@@ -15,8 +15,7 @@ then
           sudo  debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
           sudo apt-get update
           sudo apt-get install mysql-server -y
-          sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/my.cnf
-          #sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
+          sed -i 's/127.0.0.1/0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
           echo "restoring  the dump file for the application"
           echo
           echo
